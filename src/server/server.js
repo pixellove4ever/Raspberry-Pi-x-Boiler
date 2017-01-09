@@ -1,4 +1,4 @@
-// http://www.robert-drummond.com/2013/05/08/how-to-build-a-restful-web-api-on-a-raspberry-pi-in-javascript-2/
+let path = require('path');
 let http = require('http');
 let express = require('express');
 
@@ -7,7 +7,7 @@ let app = express();
 let inputs = [{ pin: '11', gpio: '17', value: 1 },
               { pin: '12', gpio: '18', value: 0 }];
 
- app.use('/static/', express.static(path.join(__dirname, '../client/'));
+ app.use('/client/', express.static(path.join(__dirname, '../client/')));
 
 // Express route for incoming requests for a customer name
 app.get('/inputs/:id', function(req, res) {
@@ -15,7 +15,7 @@ app.get('/inputs/:id', function(req, res) {
 });
 
 // Express route for any other unrecognised incoming requests
-app.get('*', function(req, res) {
+app.use(function(req, res, next) {
   res.status(404).send('Unrecognised API call');
 });
 
