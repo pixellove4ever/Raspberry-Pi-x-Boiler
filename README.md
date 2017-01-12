@@ -16,5 +16,7 @@ Quelques commandes :
 
 Utilisation de cloud9 pour avoir une webIde (https://c9.io/)
 Installation depuis https://github.com/chintanp/Cloud9-on-RPi, merci à chintanp
+
 Commande pour lancer le serveur "./server.js -l 0.0.0.0 -a : -w ~" dans "/cloud9/node_modules/c9sdk "
 
+Lancement du serveur "node server.js" dans "/dev/Raspberry-Pi-x-Boiler/src/server"
