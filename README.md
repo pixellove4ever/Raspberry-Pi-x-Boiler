@@ -32,4 +32,16 @@ w1-therm
 dans /etc/modules et 
 dtoverlay=w1-gpio, gpiopin=4 dans le fichier /boot/config.txt. gpiopin = 4 correspond au nom du GPIO sur lequel le fil data de la sonde est connecté.
 
+Pour activer une led (et donc plus tard controler le relai de la chaudière) on fait:
+cd /sys/class/gpio/
+echo "24" > export
+cd gpio24
+echo "out" > direction
+echo "1" > value
 
+Le numéro du GPIO correspond au nom du GPIO, pas le numéro de la pin.
+Pour eteindre :
+
+echo "0" > value
+cd ..
+echo "24" > unexport
