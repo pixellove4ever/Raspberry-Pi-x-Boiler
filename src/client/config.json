@@ -1,0 +1,35 @@
+{"perif" :
+	[
+		{
+		"iden" : 0,
+		"name" : "Eclairage Cockpit",
+		"inp" : 13,
+		"out" : 18,
+		"icon" : "lampe",
+		"etat" : 0
+		},	
+		{
+		"iden" : 1,
+		"name" : "Moteur Droit",
+		"inp" : 19,
+		"out" : 23,
+		"icon" : "elice",
+		"etat" : 0
+		},	
+		{
+		"iden" : 2,
+		"name" : "Moteur Gauche",
+		"inp" : 26,
+		"out" :24,
+		"icon" : "elice",
+		"etat" : 0
+		}
+	],
+	"credit" : 
+	{
+		"auteur" : "Bud *Robert* Spencer",
+		"level" : 6,
+		"date" : "Octobre 2016",
+		"licence" : "To Kill"
+	}
+}

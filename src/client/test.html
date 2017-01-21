@@ -1,0 +1,110 @@
+﻿<!--
+
+   
+-->
+
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+	<title>Framboise 314 Tuto</title>
+	<meta http-equiv="content-type" content="text/html;charset=utf-8" />
+	
+	<style type="text/css">	
+		td {
+			border-style:solid;
+			border-color:black;
+			border-width:1px;
+			padding:5px;
+			font-size:16px;
+			font-weight:bold;							
+		}	
+	</style>
+</head>
+
+<body>
+	
+	<div id="page" style="width:800px;margin:auto;text-align:center">
+	<img src="/public/logo.gif"><br>
+	<p id="credit" style="font-size:12px;font-weight:bold"></p>
+	<p id="lecon" style="font-size:12px;color:red"></p>
+
+	<table id="tbl" align="center">
+	<tr>
+		<td style="width:50px;text-align:center;color:white;background-color:blue">Type</td>
+		<td style="width:200px;text-align:left;color:white;background-color:blue">Périphérique</td>
+		<td style="width:80px;text-align:center;color:white;background-color:blue">GPIO In</td>
+		<td style="width:80px;text-align:center;color:white;background-color:blue">GPIO Out</td>
+		<td style="width:50px;text-align:lcenter;color:white;background-color:blue">Etat</td>	
+	</tr>
+	</table>
+
+	<br><br>
+	
+	</div>
+		
+	<script src="/jquery/jquery.js"></script>
+	<script src="/socketio/socket.io.js"></script>
+
+	<script type = "text/javascript">
+
+        var io = io.connect(location.host);
+        var perifs;
+        
+        io.on('connected',function(data)
+        {
+			$('#credit').text('Powerded by ' + data.config.credit.auteur);
+			$('#lecon').text('Leçon n° ' + data.config.credit.level);
+			if(!perifs)
+			{
+				perifs = data.config.perif;
+				for (var i = 0;i < perifs.length;i++)
+				{
+					perif = data.config.perif[i];
+					
+					$("#tbl").append('<tr >' +
+					'<td><img src="/public/' +perif.icon + '.png"/></td>' +
+					'<td style="text-align:left">' + perif.name + '</td>' +
+					'<td style="text-align:center">' + perif.inp + '</td>' +
+					'<td style="text-align:center">' + perif.out + '</td>' +					
+					'<td id="td' + perif.iden + '"><input type="button" id="bt' + perif.iden + '" ' +
+					'onclick="sendEvent(' + perif.iden + ')" ' +
+					'value="bouton"></td>' +
+					'</tr>');	
+					setStatus(perif.iden,perif.etat);
+																			
+				}				
+			}		
+		});
+		
+		function setStatus(iden,etat)
+		{
+			if(etat ==1)
+			{
+				$('#bt' + iden).attr('value','On');
+				$('#td' + iden).css('background-color','Lime');
+			}
+			else
+			{
+			   $('#bt' + iden).attr('value','Off');
+			   $('#td' + iden).css('background-color','Gray');
+			}		
+		}
+			
+		io.on('perifchange',function(data)
+		{
+			setStatus(data.iden,data.etat);
+		});
+        
+        
+
+        function sendEvent(iden)
+        {
+            io.emit('perifchange',{iden : iden});
+        }
+		
+	</script>
+	
+</body>
+
+</html>
