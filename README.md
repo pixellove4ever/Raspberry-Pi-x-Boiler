@@ -50,7 +50,8 @@ echo "1" > value
 Le numéro du GPIO correspond au nom du GPIO, pas le numéro de la pin.
 Pour eteindre :
 
-```echo "0" > value
+```
+echo "0" > value
 cd ..
 echo "24" > unexport
 ```
