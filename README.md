@@ -19,12 +19,11 @@ Installation depuis https://github.com/chintanp/Cloud9-on-RPi, merci à chintanp
 
 Commande pour lancer le serveur ```./server.js -l 0.0.0.0 -a : -w ~``` dans "/cloud9/node_modules/c9sdk "
 
-Lancement du serveur ```node server.js``` dans "/dev/Raspberry-Pi-x-Boiler/src/server"
+Lancement du serveur ```<bash>node server.js``` dans "/dev/Raspberry-Pi-x-Boiler/src/server"
 
 Pour lancer les serveur au demarage du système, on utilise CRON. Une fois lancer cron, ```crontab -e```, inserer les lignes suivantes:
-```@reboot /usr/local/bin/node /home/pi/cloud9/node_modules/c9sdk/server.js -l 0.0.0.0 -a : -w ~ &```
-```@reboot /usr/local/bin/node /home/pi/dev/Raspberry-Pi-x-Boiler/src/server/server.js &```
-
+```@reboot /usr/local/bin/node /home/pi/cloud9/node_modules/c9sdk/server.js -l 0.0.0.0 -a : -w ~ &
+@reboot /usr/local/bin/node /home/pi/dev/Raspberry-Pi-x-Boiler/src/server/server.js &```
 
 Pour la lecture de la temperature via une sonde DS18B20 il faut ajouter:
 ```w1-gpio```
