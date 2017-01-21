@@ -22,25 +22,35 @@ Commande pour lancer le serveur ```./server.js -l 0.0.0.0 -a : -w ~``` dans "/cl
 Lancement du serveur ```<bash>node server.js``` dans "/dev/Raspberry-Pi-x-Boiler/src/server"
 
 Pour lancer les serveur au demarage du système, on utilise CRON. Une fois lancer cron, ```crontab -e```, inserer les lignes suivantes:
-```@reboot /usr/local/bin/node /home/pi/cloud9/node_modules/c9sdk/server.js -l 0.0.0.0 -a : -w ~ &
-@reboot /usr/local/bin/node /home/pi/dev/Raspberry-Pi-x-Boiler/src/server/server.js &```
+```
+@reboot /usr/local/bin/node /home/pi/cloud9/node_modules/c9sdk/server.js -l 0.0.0.0 -a : -w ~ & 
+@reboot /usr/local/bin/node /home/pi/dev/Raspberry-Pi-x-Boiler/src/server/server.js &
+```
 
 Pour la lecture de la temperature via une sonde DS18B20 il faut ajouter:
-```w1-gpio```
-```w1-therm```
+```
+w1-gpio
+w1-therm
+```
 dans /etc/modules et 
-```dtoverlay=w1-gpio, gpiopin=4``` dans le fichier /boot/config.txt. gpiopin = 4 correspond au nom du GPIO sur lequel le fil data de la sonde est connecté.
+```
+dtoverlay=w1-gpio, gpiopin=4
+```
+dans le fichier /boot/config.txt. gpiopin = 4 correspond au nom du GPIO sur lequel le fil data de la sonde est connecté.
 
 Pour activer une led (et donc plus tard controler le relai de la chaudière) on fait:
-```cd /sys/class/gpio/
+```
+cd /sys/class/gpio/
 echo "24" > export
 cd gpio24
 echo "out" > direction
-echo "1" > value```
+echo "1" > value
+```
 
 Le numéro du GPIO correspond au nom du GPIO, pas le numéro de la pin.
 Pour eteindre :
 
 ```echo "0" > value
 cd ..
-echo "24" > unexport```
+echo "24" > unexport
+```
