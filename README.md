@@ -38,6 +38,21 @@ dtoverlay=w1-gpio, gpiopin=4
 ```
 dans le fichier /boot/config.txt. gpiopin = 4 correspond au nom du GPIO sur lequel le fil data de la sonde est connecté.
 
+Ensuite, pour lire la valeur retournée par le thermomètre, il faut d'abord trouvé l'identifiant de la led
+```
+ls /sys/bus/w1/devices/
+```
+Normalement, le terminal devrait lister le thermomètre. Enfin, on lit la température:
+
+```
+more /sys/bus/w1/devices/N° de la sonde lu/w1_slave
+```
+La lecture retourne quelque chose du type
+```
+t=18437
+```
+Ca correspond à une temperature de 18,437°C
+
 Pour activer une led (et donc plus tard controler le relai de la chaudière) on fait:
 ```
 cd /sys/class/gpio/
