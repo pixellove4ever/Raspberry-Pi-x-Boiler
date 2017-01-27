@@ -56,8 +56,8 @@ Ca correspond à une temperature de 18,437°C
 Pour activer une led (et donc plus tard controler le relai de la chaudière) on fait:
 ```
 cd /sys/class/gpio/
-echo "24" > export
-cd gpio24
+echo "23" > export
+cd gpio23
 echo "out" > direction
 echo "1" > value
 ```
@@ -68,5 +68,5 @@ Pour eteindre :
 ```
 echo "0" > value
 cd ..
-echo "24" > unexport
+echo "23" > unexport
 ```
