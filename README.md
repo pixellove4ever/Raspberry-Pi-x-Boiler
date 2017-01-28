@@ -42,10 +42,10 @@ Ensuite, pour lire la valeur retournée par le thermomètre, il faut d'abord tro
 ```
 ls /sys/bus/w1/devices/
 ```
-Normalement, le terminal devrait lister le thermomètre. Enfin, on lit la température:
+Normalement, le terminal devrait lister le thermomètre. Ici, l'identifiant de notre thermomètre est 28-041661cc1aff. Il est unique, chaque thermomètre a le sien. Enfin, on lit la température:
 
 ```
-more /sys/bus/w1/devices/N° de la sonde lu/w1_slave
+more /sys/bus/w1/devices/28-041661cc1aff/w1_slave
 ```
 La lecture retourne quelque chose du type
 ```
