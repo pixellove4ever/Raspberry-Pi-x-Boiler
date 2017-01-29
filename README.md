@@ -19,7 +19,7 @@ Installation depuis https://github.com/chintanp/Cloud9-on-RPi, merci à chintanp
 
 Commande pour lancer le serveur ```./server.js -l 0.0.0.0 -a : -w ~``` dans "/cloud9/node_modules/c9sdk "
 
-Lancement du serveur ```<bash>node server.js``` dans "/dev/Raspberry-Pi-x-Boiler/src/server"
+Lancement du serveur ```node server.js``` dans "/dev/Raspberry-Pi-x-Boiler/src/server"
 
 Pour lancer les serveur au demarage du système, on utilise CRON. Une fois lancer cron, ```crontab -e```, inserer les lignes suivantes:
 ```
@@ -38,11 +38,26 @@ dtoverlay=w1-gpio, gpiopin=4
 ```
 dans le fichier /boot/config.txt. gpiopin = 4 correspond au nom du GPIO sur lequel le fil data de la sonde est connecté.
 
+Ensuite, pour lire la valeur retournée par le thermomètre, il faut d'abord trouvé l'identifiant de la led
+```
+ls /sys/bus/w1/devices/
+```
+Normalement, le terminal devrait lister le thermomètre. Ici, l'identifiant de notre thermomètre est 28-041661cc1aff. Il est unique, chaque thermomètre a le sien. Enfin, on lit la température:
+
+```
+more /sys/bus/w1/devices/28-041661cc1aff/w1_slave
+```
+La lecture retourne quelque chose du type
+```
+t=18437
+```
+Ca correspond à une temperature de 18,437°C
+
 Pour activer une led (et donc plus tard controler le relai de la chaudière) on fait:
 ```
 cd /sys/class/gpio/
-echo "24" > export
-cd gpio24
+echo "23" > export
+cd gpio23
 echo "out" > direction
 echo "1" > value
 ```
@@ -53,5 +68,5 @@ Pour eteindre :
 ```
 echo "0" > value
 cd ..
-echo "24" > unexport
+echo "23" > unexport
 ```
