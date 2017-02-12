@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+    <!--polyfills for the browsers of hell-->
+    <script src="https://cdn.polyfill.io/v2/polyfill.min.js?features=default,Symbol,fetch,Array.prototype.values"></script>
+    <link rel="stylesheet" type="text/css" href="main.css" />
+    <style>
+        html {
+            box-sizing: border-box;
+        }
+        
+        *,
+        *:before,
+        *:after {
+            box-sizing: inherit;
+        }
+        
+        body {
+            display: block;
+            margin: 0;
+            background: #333;
+            overflow: hidden;
+            color: #fff
+        }
+    </style>
+    <title>Raspberry PiX</title>
+</head>
+
+<body>
+    <div id="container">
+        <input type="checkbox" id="togglebox" />
+        <div class="overlay"><label for="togglebox"></label></div>
+        <nav id="offcanvas-menu">
+            <h1>The <b>Boiler</b> Project</h1>
+            <button onClick=>Reglages</button>
+            <button onClick=>Plannification d'arret </button>
+            <button onClick=>Historique</button>
+
+            <h2>by Godjam & Pix</h2>
+        </nav>
+        <!-- contentarea -->
+        <div id="main-container">
+            <label for="togglebox" id="navtoggler">Menu</label>
+            <div id="intro" class="intro_fade">Hello. Welcome here!</div>
+            <canvas></canvas>
+            <!-- Rectangular switch -->
+            <label class="switch">
+      <input type="checkbox">
+      <div class="slider"></div>
+      </label>
+        </div>
+    </div>
+    <!--<H1>Express API server test</H1>
+  <div id="input"></div>
+  <script src="index.js"></script> -->
+</body>
+
+</html>

@@ -2,9 +2,12 @@ let path = require('path');
 let http = require('http');
 let express = require('express');
 let SensorWrapper = require('./sensorwrapper');
+let Store = require('./store');
+var CronJob = require('cron').CronJob;
 
 let app = express();
 let sensors = new SensorWrapper();
+let store = new Store();
 
 app.use('/', express.static(path.join(__dirname, '../client/')));
 
@@ -32,4 +35,7 @@ app.use(function(err, req, res, next) {
 app.listen(3000);
 console.log('App Server running at port 3000');
 
-sensors.testReadAllPins();
+new CronJob('0 */10 * * * *', () => {
+  store.addTemperature(sensors.readTemperature());
+  console.log('temp logged');
+}, null, true); //, 'Europe/Paris', this, true);

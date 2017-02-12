@@ -1,19 +1,94 @@
 <!DOCTYPE html>
-<html lang="en">
-
+<html>
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
-  <!--polyfills for the browsers of hell-->
-  <script src="https://cdn.polyfill.io/v2/polyfill.min.js?features=default,Symbol,fetch,Array.prototype.values"></script>
-  <style>html {box-sizing: border-box;} *,*:before,*:after {box-sizing: inherit;} body {display:block; margin:0; background: #333; overflow: hidden; color:#fff}</style>
-<title>Raspberry PiX</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" href="main.css"/>
+    <link rel="stylesheet" href="http://www.w3schools.com/lib/w3.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.3/css/font-awesome.min.css">
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+    <script type="text/javascript" src="index.js"></script>
+    <title>Raspberry PiX</title>
 </head>
 
 <body>
-  <H1>Express API server test</H1>
-  <div id="input"></div>
-  <script src="index.js"></script>
+
+<<<<<<<<< saved version
+
+  <!-- Sidenav/menu -->
+  <nav class="w3-sidenav w3-collapse w3-white w3-animate-left" style="z-index:3;width:230px;" id="mySidenav"><br>
+    <div class="w3-container">
+      <a href="#" onclick="closeNav()" class="w3-hide-large w3-right w3-xlarge w3-padding" title="close menu">
+        <i class="fa fa-remove"></i>
+      </a>
+    </div>
+    <a href="index.html" onclick="closeNav()" class="w3-padding w3-text-teal w3-xlarge"><i class="fa fa-toggle-on fa-fw w3-margin-right"></i>Activation</a>
+    <a href="vacances.html" onclick="closeNav()" class="w3-padding w3-large"><i class="fa fa-sun-o fa-fw w3-margin-right"></i>Mode Vacances</a>
+    <a href="historique.html" onclick="closeNav()" class="w3-padding w3-large"><i class="fa fa-area-chart fa-fw w3-margin-right"></i>Historique</a>
+    <a href="test.html" onclick="closeNav()" class="w3-padding w3-large"><i class="fa fa-fw w3-margin-right"></i>Test</a>
+=========
+<!-- Sidenav/menu -->
+<nav class="w3-sidenav w3-collapse w3-white w3-animate-left" style="z-index:3;width:230px;" id="mySidenav"><br>
+  <div class="w3-container">
+    <a href="#" onclick="closeNav()" class="w3-hide-large w3-right w3-xlarge w3-padding" title="close menu">
+      <i class="fa fa-remove"></i>
+    </a>
+  </div>
+  <a href="index.html" onclick="closeNav()" class="w3-padding w3-text-teal w3-xlarge"><i class="fa fa-toggle-on fa-fw w3-margin-right"></i>Activation</a> 
+  <a href="vacances.html" onclick="closeNav()" class="w3-padding w3-large"><i class="fa fa-sun-o fa-fw w3-margin-right"></i>Mode Vacances</a> 
+  <a href="historique.html" onclick="closeNav()" class="w3-padding w3-large"><i class="fa fa-area-chart fa-fw w3-margin-right"></i>Historique</a>
+   
+  <footer class="w3-container w3-padding-48 w3-center w3-medium">
+  By
+  <a href="http://www.twitter.com/gooodjam" class="w3-hover-white w3-hover-text-light-blue"><i class="fa fa-twitter"></i> Godjam</a>
+  &
+  <a href="http://www.twitter.com/pixellove4ever" class="w3-hover-white w3-hover-text-light-blue"><i class="fa fa-twitter"></i> Pix</a>
+  </footer>
+</nav>
+>>>>>>>>> local version
+
+    <footer class="w3-container w3-padding-48 w3-center w3-medium">
+      By
+      <a href="http://www.twitter.com/gooodjam" class="w3-hover-white w3-hover-text-light-blue"><i class="fa fa-twitter"></i> Godjam</a> &
+      <a href="http://www.twitter.com/pixellove4ever" class="w3-hover-white w3-hover-text-light-blue"><i class="fa fa-twitter"></i> Pix</a>
+    </footer>
+  </nav>
+
+  <!-- Overlay effect when opening sidenav on small screens -->
+  <div class="w3-overlay w3-hide-large w3-animate-opacity" onclick="openNav()" style="cursor:pointer" title="close side menu" id="myOverlay">&#9776;</div>
+
+  <!-- Main -->
+  <nav class="w3-main w3-padding-64" style="margin-left:230px">
+    <header class="nav-down">
+      <!--Use any element to open the sidenav -->
+      <span class="w3-opennav w3-hide-large w3-xxlarge w3-hover-text-grey" onclick="openNav()" style="margin:15px"><i class="fa fa-bars"></i></span>
+    </header>
+    <!--  switch -->
+    <!--  TODO Enregister la position du bouton de séléction
+Ajouter les selecteurs circulaires et les fonctions qui vont avec
+Verifier mise en page sur mobile, genre rajouter l'ouverture du menu dans un header qui disparait quand on descend la page
+-->
+    <label class="switch ">
+  <input id="validation" name="validation" type="checkbox" onclick="show_hide_DIV_data()" />
+  <div class="slider"> </div>
+</label> Activation de la chaudière
+    <div class="w3-padding-48" id="DIV_data" style="display:none;">ici mettre rond de selection des temperatures</div>
+    <!--
+TODO : Faire varier temperature en fonction de la lecture du capteur et de l'info parsé depuis WU
+Faire varier le fond de la div en fonction de la temperature (200-(temp)*5) en remplacement de 200 dans hsl(200, 60%, 65%);
+-->
+    <div class="w3-center w3-padding-32"></div>
+    <div class="backTempInt w3-center">
+      <temp class="Temp. Int">18ºC</temp>
+    </div>
+    <div class="backTempExt w3-center">
+      <temp class="Temp. Ext">0ºC</temp>
+      <!--TODO changer le logo en fonciton du parse de WU -->
+      <p>
+        <img src="weather icons/light_rain.png" alt="Pluie fine" />
+      </p>
+    </div>
+  </nav>
 </body>
 
 </html>

@@ -4,6 +4,12 @@ curl -sLS https://apt.adafruit.com/add | sudo bash
 sudo apt-get install node
 node -v
 
+## installer Cloud9 (prerequis, avoir NodeJs d'installer)
+echo "Now getting the latest Cloud9 SDK"
+git clone git://github.com/c9/core.git c9sdk
+cd c9sdk
+scripts/install-sdk.sh
+
 ## GPIO :
 http://webofthings.org/2016/10/23/node-gpio-and-the-raspberry-pi/
 https://www.npmjs.com/package/rpi-gpio 
