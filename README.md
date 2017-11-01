@@ -53,20 +53,28 @@ t=18437
 ```
 Ca correspond à une temperature de 18,437°C
 
+Le numéro du GPIO correspond au nom du GPIO, pas le numéro de la pin. Il faut avoir installer WiringPi (http://wiringpi.com/). Si c'est bien installé, lorsque que vous faites :
+```
+gpio mode 0 out
+```
+Si rien ne se passe, c'est que c'est bien installé. Sinon un message du type : " command not found error " s'affiche.
+
+On commence par activer le GPIO :
+```
+gpio -g mode 23 out
+```
 Pour activer une led (et donc plus tard controler le relai de la chaudière) on fait:
 ```
-cd /sys/class/gpio/
-echo "23" > export
-cd gpio23
-echo "out" > direction
-echo "1" > value
-```
-
-Le numéro du GPIO correspond au nom du GPIO, pas le numéro de la pin.
-Pour eteindre :
+gpio -g write 23 1 
 
 ```
-echo "0" > value
-cd ..
-echo "23" > unexport
+Pour éteindre :
+
+```
+gpio -g write 23 0
+
+```
+Pour lire l'état du GPIO :
+```
+gpio -g read 23
 ```
