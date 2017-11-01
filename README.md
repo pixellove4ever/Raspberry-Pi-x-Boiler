@@ -15,7 +15,7 @@ Quelques commandes :
 - Attacher une session : ```screen -r (+nom session)```
 
 Utilisation de cloud9 pour avoir une webIde (https://c9.io/)
-Installation depuis https://github.com/chintanp/Cloud9-on-RPi, merci à chintanp
+Installation depuis https://github.com/chintanp/Cloud9-on-RPi, merci à chintanp (https://www.siaris.net/post/cloud9/)
 
 Commande pour lancer le serveur ```./server.js -l 0.0.0.0 -a : -w ~``` dans "/cloud9/node_modules/c9sdk "
 
