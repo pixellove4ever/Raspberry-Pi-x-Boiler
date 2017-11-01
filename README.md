@@ -66,13 +66,11 @@ gpio -g mode 23 out
 Pour activer une led (et donc plus tard controler le relai de la chaudière) on fait:
 ```
 gpio -g write 23 1 
-
 ```
 Pour éteindre :
 
 ```
 gpio -g write 23 0
-
 ```
 Pour lire l'état du GPIO :
 ```
