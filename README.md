@@ -53,6 +53,8 @@ t=18437
 ```
 Ca correspond à une temperature de 18,437°C
 
+voir https://www.youtube.com/watch?v=4B4bBqEgYKo pour l'implementation sur un serveur web
+
 Le numéro du GPIO correspond au nom du GPIO, pas le numéro de la pin. Il faut avoir installer WiringPi (http://wiringpi.com/). Si c'est bien installé, lorsque que vous faites :
 ```
 gpio mode 0 out
